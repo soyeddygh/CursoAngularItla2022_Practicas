@@ -1,0 +1,15 @@
+
+
+<div id="tarjeta" class="card" *ngIf="nombre && titulo && bio; else cambio">
+    <div class="elementos">
+        <h2>Tarjeta de Presentación</h2>
+        <p>Nombre:{{nombre}}</p>
+        <p>Titulo:{{titulo}}</p>
+        <p>Bio:{{bio}}</p>
+    </div>
+</div>
+<ng-template #cambio>
+    <div class="vacio texto">
+    <p>No incluyó datos en esta tarjeta</p>
+</div>
+</ng-template>

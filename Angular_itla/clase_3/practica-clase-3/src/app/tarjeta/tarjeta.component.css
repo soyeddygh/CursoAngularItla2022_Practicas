@@ -1,0 +1,33 @@
+
+.card{
+border: 0.5px solid #ccc;    
+box-shadow: 0 0.2em #4D4E55;
+background-color: #F4AB64;
+margin-top: 8px;
+}
+
+.elementos{
+    margin: 0 8px;
+    padding: 0 5px;
+    font-weight: bold;
+    color: #3749F5;
+}
+
+h2{
+    color:#fff;
+}
+
+
+.vacio{
+    border: 0.5px solid #ccc;    
+    box-shadow: 0 0.2em #4D4E55;
+    background-color: #F4AB64;
+    margin-top: 8px;
+    }
+
+.vacio.texto{
+        color:#000;
+        font-weight: bold;
+        font-size: large;
+        margin: 5px;
+    }
