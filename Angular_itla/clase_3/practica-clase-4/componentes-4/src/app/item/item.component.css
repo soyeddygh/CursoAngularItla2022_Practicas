@@ -1,0 +1,15 @@
+
+
+.card1{
+    border: 2px solid #000;
+    padding: 8px;
+    background-color: #606db4;
+    border-radius: 5px;
+    color: #f8fbfc;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    width: 250px;
+    height: auto;
+}
+

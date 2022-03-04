@@ -1,0 +1,21 @@
+
+.caja{
+    border-radius: 5px;
+    width: 300px;
+    height: 25px;
+    padding: 5px;
+    margin: 4px;
+}
+
+.btn1{
+    border-radius: 5px;
+    width: 100px;
+    height: 38px;
+    padding: 5px;
+    margin: 4px;
+    font-size: small;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: #5c74e0;
+    color: #fdfdff;
+}
