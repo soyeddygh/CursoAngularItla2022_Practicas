@@ -1,0 +1,9 @@
+<div class="container mt-2">
+    <div class="col-4">
+        <div class="row">
+            <app-tarjeta *ngFor="let persona of personas" [persona]="persona" (onBorrar)="borrarPersona($event)">
+            </app-tarjeta>
+        </div>
+    </div>
+        
+</div>

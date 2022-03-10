@@ -1,0 +1,35 @@
+
+<div class="container mt-5">
+    <h1 class="form-group">Listado de Personas</h1>
+
+    <div class="card">
+            <div class="card-body">
+                <p class="card-title text-center">Datos de la Persona</p>
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <label for="fcNombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" [formControl]="fcNombre" class="form-control" placeholder="Nombre" />
+                    </div>
+                    <div class="col-12 mt-3">
+                        <label for="fcNombre" class="form-label">Título</label>
+                        <select [formControl]="fcTitulo" class="form-select">
+                            <option *ngFor="let titulo of titulos"
+                            value="{{titulo}}">{{titulo}}</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <label for="fcNombre" class="form-label">Bio</label>
+                        <input type="text" id="bio" [formControl]="fcBio" class="form-control" placeholder="Bio" />
+                    </div>
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-primary" (click)="guardar()">Guardar</button>    
+                    </div>
+                </div>
+            </div>       
+    </div>
+
+    <div class="mt-5">
+        <app-listado></app-listado>
+    </div>
+
+</div>
