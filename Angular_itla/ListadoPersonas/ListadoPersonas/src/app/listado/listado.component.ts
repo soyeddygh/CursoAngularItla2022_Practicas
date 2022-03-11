@@ -16,16 +16,13 @@ export class ListadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  borrarPersona(persona: Persona){
-    //alert('onBorrar click' + persona.id)
-    let id = persona.id-1;
-    alert(id);
-   // let borraPersona = persona.indexOf(id);
-  
-    //this.personas.slice(persona.id-1, 1)
+  borrarPersona(persona: Persona) {
+    let id = persona.id;
+    const i = this.personas.findIndex(o => {
+      return o.id === persona.id;
+    });
 
-    var newArray = this.personas.filter((item) => item.id == id);
-
-}
+    this.personas.splice(i, 1);
+  }
 
 }
