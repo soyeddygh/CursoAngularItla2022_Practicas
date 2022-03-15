@@ -17,7 +17,7 @@ export class ListadoComponent implements OnInit {
   }
 
   borrarPersona(persona: Persona) {
-    let id = persona.id;
+    //let id = persona.id;
     const i = this.personas.findIndex(o => {
       return o.id === persona.id;
     });
