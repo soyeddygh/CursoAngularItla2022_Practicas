@@ -1,5 +1,4 @@
-import { Tipo } from "./tipo";
-
+import { Tipo } from "./Tipo";
 
 export interface Categoria{
     nombre: string,
