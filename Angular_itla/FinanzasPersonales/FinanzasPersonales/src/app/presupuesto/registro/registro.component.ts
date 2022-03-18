@@ -11,6 +11,7 @@ import { PresupuestoService } from '../services/presupuesto.service';
 export class RegistroComponent implements OnInit {
 
   public categorias: Categoria[]=[];
+  public categoriasSelect: Categoria[]=[];
 
   constructor(public appService: AppService, public presupuestoService: PresupuestoService) { }
 
@@ -19,7 +20,6 @@ export class RegistroComponent implements OnInit {
   }
 
   salvar(){
-    console.log('click');
     this.presupuestoService.CrearTransaccion();
   }
 }

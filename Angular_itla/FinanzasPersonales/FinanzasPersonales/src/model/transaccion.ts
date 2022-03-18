@@ -5,4 +5,5 @@ export interface Transaccion {
     monto: number;
     fecha: Date;
     tipo: Categoria;
+    cuenta: string;
 }

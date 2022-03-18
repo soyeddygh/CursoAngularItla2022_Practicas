@@ -3,24 +3,44 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="card-title">💸 Registro de Transacciones</div>
                     <form [formGroup]="this.presupuestoService.form">
-                        <div class="form-group mt-2">
-                            <label for="selCategoria">Monto</label>
-                            <select class="form-select">
+                        <div class="mt-2">
+                            <label for="selCategoria">Transaccion</label>
+                            <select formControlName="tipo" 
+                            class="form-select" required>
                                 <option *ngFor="let c of categorias" [value]="c.tipo">{{c.nombre}}</option>
-                            </select>    
+                            </select>
+                            <div *ngIf="this.presupuestoService.tipo" class="invalid-feedback">
+                                El tipo de transaccion es requerido.
+                            </div>
                         </div>
-
-                        <div class="form-group mt-2">
-                            <label for="iptMonto">Monto</label>
-                            <input formControlName="monto" type="text" class="form-control" id="iptMonto" placeholder="0.00">
+                        <!--
+                        <div class="form-group mt-2" visible="false">
+                            <label for="selCuenta">Cuenta</label>
+                            <select formControlName="cuenta" class="form-select">
+                                <option *ngFor="let c of categorias" 
+                                 [value]="c.tipo">{{c.tipo}}</option>
+                            </select>
                         </div>
-
-                        <div class="form-group mt-2">
+                        -->
+                        <div class="mt-2">
+                            <label for="monto">Monto</label>
+                            <input formControlName="monto" type="number" id="monto" class="form-control"
+                             [ngClass]="this.presupuestoService.monto?.touched && this.presupuestoService.monto?.errors ? 'is-invalid' : ''"
+                              placeholder="0.00">
+                              <div *ngIf="this.presupuestoService.monto?.touched && this.presupuestoService.monto?.errors ? 'is-invalid' : ''" class="invalid-feedback">
+                                  El monto es requerido.
+                              </div>
+                        </div>
+                        <div class="mt-2">
                             <label for="iptFecha">Fecha</label>
                             <input formControlName="fecha" type="date" class="form-control" id="iptFecha">
+                            <div *ngIf="this.presupuestoService.fecha" class="invalid-feedback">
+                               La fecha de la transaccion es requerida.
+                            </div>
                         </div>
-                        <div class="form-group mt-2">
+                        <div class="mt-2">
                             <button (click)="salvar()" class="btn btn-primary">
                                 Salvar
                             </button>

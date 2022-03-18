@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { Categoria } from 'src/model/Categoria';
 import { Tipo } from 'src/model/Tipo';
@@ -27,14 +27,15 @@ export class PresupuestoService {
     {
       nombre: "Electricidad", tipo: Tipo.Gasto 
     }
-]
+  ]
 
   constructor(private formBuilder: FormBuilder, public appService: AppService) {
     this.form = this.formBuilder.group(
       {
-        monto: [''],
-        fecha: [''],
-        tipo: ['']
+        monto: ['',[Validators.required]],
+        fecha: ['',[Validators.required]],
+        cuenta: [''],
+        tipo: ['',[Validators.required]]
       }
     )
    }
@@ -49,9 +50,23 @@ export class PresupuestoService {
       id: 0,
       monto: this.form.get("monto")?.value,
       fecha: this.form.get("fecha")?.value, 
+      cuenta: this.form.get("tipo")?.value,
       tipo: this.form.get("tipo")?.value
     };
      this.appService.agregarRegistro(tran);
      console.log(tran);
    }
+
+   get monto(){
+     return this.form.get("monto")
+   }
+
+   get fecha(){
+    return this.form.get("fecha")
+  }
+  get tipo(){
+    return this.form.get("tipo")
+  }
+
+
 }
