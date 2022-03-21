@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row  mt-5">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card bg-secondary">
                 <div class="card-body">
-                    <div class="card-title">💸 Registro de Transacciones</div>
-                    <form [formGroup]="this.presupuestoService.form">
+                    <div class="card-title text-center fw-bold text-warning fs-4">💰 Registro de Transacciones 💸</div>
+                    <form [formGroup]="this.presupuestoService.form" class="text-white fw-bold">
                         <div class="mt-2">
                             <div class="form-group mt-2" visible="false">
-                                <label for="tipo">tipo transaccion</label>
+                                <label for="tipo">Tipo de transaccion</label>
                                 <select formControlName="tipo"
                                 [ngClass]="this.presupuestoService.tipo?.touched && this.presupuestoService.tipo?.errors ? 'is-invalid' : ''"
                                 class="form-select"
@@ -20,7 +20,7 @@
                                 </div>
                             </div>
 
-                            <label for="cuenta">cuenta</label>
+                            <label for="cuenta">Cuenta</label>
                             <select formControlName="cuenta"  
                             [ngClass]="this.presupuestoService.cuenta?.touched && this.presupuestoService.cuenta?.errors ? 'is-invalid' : ''"                          
                             class="form-select" required>
@@ -29,9 +29,7 @@
                             <div *ngIf="this.presupuestoService.cuenta?.touched && this.presupuestoService.cuenta?.errors ? 'is-invalid' : ''" class="invalid-feedback">
                                 La cuenta de la transaccion es requerida.
                             </div>
-                        </div>                    
-                       
-                        
+                        </div>                                  
                         <div class="mt-2">
                             <label for="monto">Monto</label>
                             <input formControlName="monto" type="number" id="monto" class="form-control"
@@ -51,7 +49,7 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <button (click)="salvar()" class="btn btn-primary">
+                            <button (click)="salvar()" class="btn btn-success text-white fw-bold">
                                 Salvar
                             </button>
                         </div>

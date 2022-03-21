@@ -1,25 +1,25 @@
 
 <div class="container mt-5"> 
-  <div class="row">
+<!--   <div class="row">
     <div class="col-md-12">
       <label for="tipo">tipo transaccion</label>
       <select class="form-select"
       [(ngModel)]="opcionTran" (change)="filtrar()">
-          <option *ngFor="let c of transacciones" 
-           [value]="c.tipo">{{c.tipo}}</option>
+          <option *ngFor="let c of tipos" 
+          [value]="c.id">{{c.nombre}}</option>
       </select>
     </div>
-  </div>
+  </div> -->
     <div class="row">
         <div class="col-md-12 col-md-8">
             <ol class="list-group list-group-numbered">
                 <li *ngFor="let tran of this.appService.obtenerRegistros()"
-                 class="list-group-item d-flex justify-content-between align-items-start">
+                 class="list-group-item d-flex justify-content-between align-items-start bg-secondary">
                   <div class="ms-2 me-auto">
-                    <div class="fw-bold">{{tran.cuenta }} | {{tran.tipo}}</div>
-                    {{tran.fecha | date: 'MMM d y'}}
+                    <div class="fw-bold text-warning">{{tran.cuenta }} | {{tran.tipo}}</div>
+                    <p class="text-white fw-bold">{{tran.fecha | date: 'MMM d y'}}</p>
                   </div>
-                  <span class="badge bg-primary rounded-pill">{{tran.monto | currency:'DOP $'}}</span>
+                  <span class="badge bg-success rounded-pill fs-6">{{tran.monto | currency:'DOP $'}}</span>
                 </li>
               </ol>
         </div>
