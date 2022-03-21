@@ -1,6 +1,6 @@
 
 
-export enum Tipo{
-    Gasto = "Gasto",
-    Ingreso = "Ingreso"
+export interface Tipo{
+    id: string;
+    nombre: string;
 }

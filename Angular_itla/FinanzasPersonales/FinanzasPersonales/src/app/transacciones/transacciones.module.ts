@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListadoComponent } from './listado/listado.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PresupuestoService } from '../presupuesto/services/presupuesto.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const rutas: Routes = [
   {
@@ -16,7 +17,9 @@ const rutas: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(rutas)
+    RouterModule.forChild(rutas),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[
     PresupuestoService

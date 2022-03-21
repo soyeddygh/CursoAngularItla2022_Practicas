@@ -11,62 +11,98 @@ import { Transaccion } from 'src/model/transaccion';
 export class PresupuestoService {
 
   public form: FormGroup;
+  public tipos: Tipo[] = [
+    {
+      id: 'Ingreso', nombre: 'Ingreso'
+    },
+    {
+      id: 'Gasto', nombre: 'Gasto'
+    }
+  ]
+
   public categorias: Categoria[] = [
     {
-      nombre: "Transporte", tipo: Tipo.Gasto 
+      nombre: "Transporte", tipo:'Gasto'
     },
     {
-      nombre: "Cafeteria", tipo: Tipo.Gasto 
+      nombre: "Cafeteria", tipo: 'Gasto'
     },
     {
-      nombre: "Cobro nomina", tipo: Tipo.Ingreso 
+      nombre: "Cobro nomina", tipo: 'Ingreso'
     },
     {
-      nombre: "Telefono", tipo: Tipo.Gasto 
+      nombre: "Otros ingresos", tipo: 'Ingreso'
     },
     {
-      nombre: "Electricidad", tipo: Tipo.Gasto 
+      nombre: "Telefono", tipo: 'Gasto'
+    },
+    {
+      nombre: "Electricidad", tipo: 'Gasto'
     }
   ]
 
   constructor(private formBuilder: FormBuilder, public appService: AppService) {
     this.form = this.formBuilder.group(
       {
-        monto: ['',[Validators.required]],
-        fecha: ['',[Validators.required]],
-        cuenta: [''],
-        tipo: ['',[Validators.required]]
+        monto: ['', [Validators.required]],
+        fecha: ['', [Validators.required]],
+        cuenta: ['', [Validators.required]],
+        tipo: ['', [Validators.required]]
       }
     )
-   }
+  }
 
-   public obtenerCategorias(){
-     return this.categorias;
-   }
+  public getRandomId() {
+    return Math.floor((Math.random() * 6) + 1);
+  }
 
-   CrearTransaccion(){
-     console.log(this.form);
-     const tran: Transaccion = {
-      id: 0,
-      monto: this.form.get("monto")?.value,
-      fecha: this.form.get("fecha")?.value, 
-      cuenta: this.form.get("tipo")?.value,
-      tipo: this.form.get("tipo")?.value
-    };
-     this.appService.agregarRegistro(tran);
-     console.log(tran);
-   }
+  public obtenerID() {
+    let id = this.getRandomId(); 
+    return id;
+  }
 
-   get monto(){
-     return this.form.get("monto")
-   }
+  public obtenerCategorias() {
+    return this.categorias;
+  }
 
-   get fecha(){
+  public obtenerTipos(){
+    return this.tipos;
+  }
+
+  CrearTransaccion() {
+    console.log(this.form);
+    if(this.form.valid){
+      const tran: Transaccion = {
+        id: this.obtenerID(),
+        monto: this.form.get("monto")?.value,
+        fecha: this.form.get("fecha")?.value,
+        cuenta: this.form.get("cuenta")?.value,
+        tipo: this.form.get("tipo")?.value
+      };
+      this.appService.agregarRegistro(tran);
+      console.log(tran);
+      this.form.reset();
+    }
+    else
+    {
+      alert('No se completo la transacción. El formulario no es válido.');
+    }
+    
+  }
+
+  get monto() {
+    return this.form.get("monto")
+  }
+
+  get fecha() {
     return this.form.get("fecha")
   }
-  get tipo(){
+  get tipo() {
     return this.form.get("tipo")
   }
 
+  get cuenta() {
+    return this.form.get("cuenta")
+  }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Categoria } from 'src/model/Categoria';
+import { Tipo } from 'src/model/Tipo';
 import { PresupuestoService } from '../services/presupuesto.service';
 
 @Component({
@@ -11,15 +12,22 @@ import { PresupuestoService } from '../services/presupuesto.service';
 export class RegistroComponent implements OnInit {
 
   public categorias: Categoria[]=[];
-  public categoriasSelect: Categoria[]=[];
+  public tipos: Tipo[]=[];
+  public opcionSel: string = '';
 
   constructor(public appService: AppService, public presupuestoService: PresupuestoService) { }
 
   ngOnInit(): void {
     this.categorias = this.presupuestoService.obtenerCategorias();
+    this.tipos = this.presupuestoService.obtenerTipos();
+  }
+
+  filtrarPorTipos(){    
+    this.categorias = this.presupuestoService.obtenerCategorias()
+               .filter(e => e.tipo == this.opcionSel);
   }
 
   salvar(){
-    this.presupuestoService.CrearTransaccion();
+    this.presupuestoService.CrearTransaccion();  
   }
 }
